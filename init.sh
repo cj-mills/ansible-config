@@ -14,3 +14,5 @@ sudo apt install $packages -y
 # printf "\n\nUninstalling packages...\n\n"
 # sudo apt remove $packages -y
 # sudo apt autoremove -y
+
+ansible-pull -U https://github.com/cj-mills/ansible-config.git
