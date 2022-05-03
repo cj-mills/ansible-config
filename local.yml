@@ -10,7 +10,7 @@
       tags: always
       apt: update_cache=yes
       when: ansible_distribution in ["Debian", "Ubuntu"]
-
+      
   tasks:
   - name: Install packages
     # Use the package module ot install packages
@@ -22,7 +22,7 @@
         - htop
         - curl
         - apt-transport-https
-
+        
   - name: install key (apt)
     vars_files:
       - vars.yml
