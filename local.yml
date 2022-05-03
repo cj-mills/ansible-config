@@ -26,21 +26,21 @@ tasks:
       - htop
       - curl
 
-- name: Install Visual Studio Code
-  become: true
-  tasks:
-    - name: Install the apt repository and signing key
-      command: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
-      command: "install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/"
-      command: "sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'"
-      command: "rm -f packages.microsoft.gpg"
+# - name: Install Visual Studio Code
+#   become: true
+#   tasks:
+#     - name: Install the apt repository and signing key
+#       command: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
+#       command: "install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/"
+#       command: "sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'"
+#       command: "rm -f packages.microsoft.gpg"
       
-    - name: Install the Visual Studio Code package
-      package: 
-        name: apt-transport-https
-      apt: update_cache=yes
-      package:
-        name: code 
+#     - name: Install the Visual Studio Code package
+#       package: 
+#         name: apt-transport-https
+#       apt: update_cache=yes
+#       package:
+#         name: code 
       
   
 # - name: Setup miniconda3
