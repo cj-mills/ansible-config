@@ -53,7 +53,6 @@
     
   # Run the installer if Miniconda is not already installed
   - name: Install miniconda3
-    become: no
     user: "{{ user }}"
     command: "/bin/bash {{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh -b"
     args:
