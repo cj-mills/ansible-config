@@ -15,16 +15,16 @@ pre_tasks:
   # enable sudo
   become: true
 
-tasks:
-- name: Install packages
-  # Use the package module ot install packages
-  package:
-    name:
-      - wget
-      - gpg
-      - git
-      - htop
-      - curl
+# tasks:
+# - name: Install packages
+#   # Use the package module ot install packages
+#   package:
+#     name:
+#       - wget
+#       - gpg
+#       - git
+#       - htop
+#       - curl
 
 # - name: Install Visual Studio Code
 #   become: true
