@@ -3,6 +3,8 @@
 # tasks to complete before running roles
 - hosts: localhost
   connection: local
+  vars_files:
+    - vars.yml
   # enable sudo
   become: true
   pre_tasks:
