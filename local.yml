@@ -39,7 +39,7 @@
     - name: Install the Visual Studio Code package
       package: 
         name: apt-transport-https
-      apt: update_cache=yes
+      command: "apt update"
       package:
         name: code 
       
