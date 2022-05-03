@@ -15,4 +15,5 @@ sudo apt install $packages -y
 # sudo apt remove $packages -y
 # sudo apt autoremove -y
 
+printf "\n\nRun Ansible configuration...\n\n"
 ansible-pull -U https://github.com/cj-mills/ansible-config.git
