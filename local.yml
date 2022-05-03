@@ -3,6 +3,7 @@
 # tasks to complete before running roles
 # hosts: all
 # tags: always
+# enable sudo
 become: true
 pre_tasks:
   - name: pre-run | update package cache (debian, etc)
