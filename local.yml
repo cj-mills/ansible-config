@@ -23,19 +23,25 @@
         - curl
         - apt-transport-https
 
-  - name: Install the Visual Studio Code package apt repository and signing key
-    command: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
-    command: "install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/"
-    command: "echo 'deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main' > /etc/apt/sources.list.d/vscode.list"
-#     command: "rm -f packages.microsoft.gpg"
-    
-  - name: Update package cache
-    apt: update_cache=yes
-      
-  - name: Install the Visual Studio Code package
-    package: 
-      name: 
-        - code 
+  - name: install key (apt)
+    become: yes
+    apt_key:
+      url: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
+      state: present
+
+  - name: install VS Code repo (apt)
+    become: yes
+    apt_repository:
+      repo: 'deb [arch=amd64{{ visual_studio_code_gpgcheck | ternary("", " trusted=yes") }}] {{ visual_studio_code_mirror }}/repos/code stable main'
+      filename: vscode
+      state: present
+    when: not visual_studio_code_skip_add_repo
+
+  - name: install VS Code (apt)
+    become: yes
+    apt:
+      name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
+      state: present
       
   
 # - name: Setup miniconda3
