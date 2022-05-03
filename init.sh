@@ -11,6 +11,6 @@ sudo apt upgrade -y
 printf "\n\nInstalling packages...\n\n"
 sudo apt install $packages -y
 
-printf "\n\nUninstalling packages...\n\n"
-sudo apt remove $packages -y
-sudo apt autoremove -y
+# printf "\n\nUninstalling packages...\n\n"
+# sudo apt remove $packages -y
+# sudo apt autoremove -y
