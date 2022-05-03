@@ -4,3 +4,4 @@ user: "innom-dt"
 ansible_python_interpreter: /usr/bin/python3
 home: "/home/{{ user }}"
 downloads_dir: "{{ home }}/Downloads"
+vscode_apt_repo: "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
