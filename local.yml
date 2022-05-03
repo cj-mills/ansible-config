@@ -26,6 +26,7 @@
         - git
         - htop
         - curl
+        - apt-transport-https
 
   - name: Install the Visual Studio Code package apt repository and signing key
     command: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
@@ -39,7 +40,6 @@
   - name: Install the Visual Studio Code package
     package: 
       name: 
-        - apt-transport-https
         - code 
       
   
