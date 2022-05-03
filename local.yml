@@ -39,7 +39,7 @@
       command: "rm -f packages.microsoft.gpg"
       
     - name: Install the Visual Studio Code package
-      apt: update_cache=yes
+#       apt: update_cache=yes
       package: 
         name: 
           - apt-transport-https
