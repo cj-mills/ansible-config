@@ -3,8 +3,6 @@
 # tasks to complete before running roles
 - hosts: localhost
   connection: local
-  vars_files:
-    - vars.yml
   # enable sudo
   become: true
   pre_tasks:
@@ -26,12 +24,16 @@
         - apt-transport-https
 
   - name: install key (apt)
+    vars_files:
+      - vars.yml
     become: yes
     apt_key:
       url: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
       state: present
 
   - name: install VS Code repo (apt)
+    vars_files:
+      - vars.yml
     become: yes
     apt_repository:
       repo: 'deb [arch=amd64{{ visual_studio_code_gpgcheck | ternary("", " trusted=yes") }}] {{ visual_studio_code_mirror }}/repos/code stable main'
@@ -40,6 +42,8 @@
     when: not visual_studio_code_skip_add_repo
 
   - name: install VS Code (apt)
+    vars_files:
+      - vars.yml
     become: yes
     apt:
       name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
