@@ -1,0 +1,65 @@
+---
+
+# tasks to complete before running roles
+hosts: all
+tags: always
+become: true
+pre_tasks:
+  - name: pre-run | update package cache (debian, etc)
+    tags: always
+    apt: update_cache=yes
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+
+- hosts: localhost
+  connection: local
+  # enable sudo
+  become: true
+
+tasks:
+- name: Install packages
+  # Use the package module ot install packages
+  package:
+    name:
+      - wget
+      - gpg
+      - git
+      - htop
+      - curl
+
+- name: Install Visual Studio Code
+  become: true
+  tasks:
+    - name: Install the apt repository and signing key
+      command: "wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg"
+      command: "install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/"
+      command: "sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'"
+      command: "rm -f packages.microsoft.gpg"
+      
+    - name: Install the Visual Studio Code package
+      package: 
+        name: apt-transport-https
+      apt: update_cache=yes
+      package:
+        name: code 
+      
+  
+- name: Setup miniconda3
+  become: no
+  user: "{{ user }}"
+  vars_files:
+    - vars.yml
+  
+  tasks:
+    # Download the latest installer file if it does not already exist
+    - name: Download miniconda3 installer
+      get_url: 
+        url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        dest: "{{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh"
+    
+    # Run the installer if Miniconda is not already installed
+    - name: Install miniconda3
+      command: "/bin/bash {{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh -b"
+      args:
+      	creates: "{{ home }}"miniconda3"
+        
+  

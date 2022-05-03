@@ -1,0 +1,6 @@
+---
+
+user: "innom-dt"
+ansible_python_interpreter: /usr/bin/python3
+home: "/home/{{ user }}"
+downloads_dir: "{{ home }}/Downloads"
