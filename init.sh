@@ -1,6 +1,6 @@
 #! /bin/bash
 
-packages="ansible"
+packages="git ansible"
 
 printf "\n\nPerforming initial setup..."
 
