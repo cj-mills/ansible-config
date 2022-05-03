@@ -47,6 +47,7 @@
       
   # Download the latest installer file if it does not already exist
   - name: Download miniconda3 installer
+    become: false
     get_url: 
       url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
       dest: "{{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh"
