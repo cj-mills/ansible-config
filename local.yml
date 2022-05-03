@@ -43,23 +43,23 @@ tasks:
         name: code 
       
   
-- name: Setup miniconda3
-  become: no
-  user: "{{ user }}"
-  vars_files:
-    - vars.yml
+# - name: Setup miniconda3
+#   become: no
+#   user: "{{ user }}"
+#   vars_files:
+#     - vars.yml
   
-  tasks:
-    # Download the latest installer file if it does not already exist
-    - name: Download miniconda3 installer
-      get_url: 
-        url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-        dest: "{{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh"
+#   tasks:
+#     # Download the latest installer file if it does not already exist
+#     - name: Download miniconda3 installer
+#       get_url: 
+#         url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+#         dest: "{{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh"
     
-    # Run the installer if Miniconda is not already installed
-    - name: Install miniconda3
-      command: "/bin/bash {{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh -b"
-      args:
-      	creates: "{{ home }}"miniconda3"
+#     # Run the installer if Miniconda is not already installed
+#     - name: Install miniconda3
+#       command: "/bin/bash {{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh -b"
+#       args:
+#       	creates: "{{ home }}"miniconda3"
         
   
