@@ -2,7 +2,7 @@
 
 # tasks to complete before running roles
 - hosts: localhost
-  tags: always
+  connection: local
   # enable sudo
   become: true
   pre_tasks:
@@ -11,21 +11,21 @@
       apt: update_cache=yes
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
-# - hosts: localhost
-#   connection: local
-#   # enable sudo
-#   become: true
+- hosts: localhost
+  connection: local
+  # enable sudo
+  become: true
 
-# tasks:
-# - name: Install packages
-#   # Use the package module ot install packages
-#   package:
-#     name:
-#       - wget
-#       - gpg
-#       - git
-#       - htop
-#       - curl
+  tasks:
+  - name: Install packages
+    # Use the package module ot install packages
+    package:
+      name:
+        - wget
+        - gpg
+        - git
+        - htop
+        - curl
 
 # - name: Install Visual Studio Code
 #   become: true
