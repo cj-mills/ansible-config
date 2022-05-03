@@ -37,11 +37,11 @@
       command: "rm -f packages.microsoft.gpg"
       
     - name: Install the Visual Studio Code package
+      apt: update_cache=yes
       package: 
-        name: apt-transport-https
-      command: "apt update"
-      package:
-        name: code 
+        name: 
+          - apt-transport-https
+          - code 
       
   
 # - name: Setup miniconda3
