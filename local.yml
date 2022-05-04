@@ -21,6 +21,7 @@
         - wget
         - gpg
         - git
+        - git-lfs
         - htop
         - iotop
         - curl
