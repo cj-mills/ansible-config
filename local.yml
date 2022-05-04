@@ -51,7 +51,7 @@
   - name: Download mambaforge installer
     become: false
     get_url: 
-      url: https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+      url: https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh
       dest: "{{ downloads_dir }}/Mambaforge-Linux-x86_64.sh"
     
   # Run the installer if mambaforge is not already installed
