@@ -22,8 +22,10 @@
         - gpg
         - git
         - htop
+        - iotop
         - curl
         - apt-transport-https
+        - imagemagick
         
   - name: install VS Code key (apt)
     become: yes
@@ -45,17 +47,17 @@
       name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
       state: present
       
-  # Download the latest installer file if it does not already exist
-  - name: Download miniconda3 installer
+  # Download the latest mambaforge installer file if it does not already exist
+  - name: Download mambaforge installer
     become: false
     get_url: 
-      url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-      dest: "{{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh"
+      url: https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+      dest: "{{ downloads_dir }}/Mambaforge-Linux-x86_64.sh"
     
-  # Run the installer if Miniconda is not already installed
-  - name: Install miniconda3
+  # Run the installer if mambaforge is not already installed
+  - name: Install mambaforge
     become: false
-    command: "/bin/bash {{ downloads_dir }}/Miniconda3-latest-Linux-x86_64.sh -b"
+    command: "/bin/bash {{ downloads_dir }}/Mambaforge-Linux-x86_64.sh"
     args:
       creates: "{{ home }}/miniconda3"
         
