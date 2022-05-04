@@ -60,5 +60,8 @@
     command: "/bin/bash {{ downloads_dir }}/Mambaforge-Linux-x86_64.sh -b"
     args:
       creates: "{{ home }}/mambaforge"
+  - name: Init mamba
+    become: false
+    command: "/bin/bash {{ home }}/mambaforge/etc/profile.d/mamba.sh"
         
   
