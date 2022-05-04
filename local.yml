@@ -27,6 +27,9 @@
         - curl
         - apt-transport-https
         - imagemagick
+        - tmux
+        # Need this for the dconf module
+				- python3-psutil
         
   - name: install VS Code key (apt)
     become: true
