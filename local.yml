@@ -58,7 +58,7 @@
   - name: Install mambaforge
     become: false
     command: "/bin/bash {{ downloads_dir }}/Mambaforge-Linux-x86_64.sh"
-    args:
-      creates: "{{ home }}/miniconda3"
+#     args:
+#       creates: "{{ home }}/mambaforge"
         
   
