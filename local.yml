@@ -62,6 +62,6 @@
       creates: "{{ home }}/mambaforge"
   - name: Init mamba
     become: false
-    command: "./mambaforge/bin/mamba init"
+    command: "{{ home }}/mambaforge/bin/mamba init"
         
   
