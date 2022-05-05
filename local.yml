@@ -73,20 +73,20 @@
         
   # Install Typora
   - name: install Typora key (apt)
-      become: true
-      apt_key:
-        url: 'https://typora.io/linux/public-key.asc'
-        state: present
+    become: true
+    apt_key:
+      url: 'https://typora.io/linux/public-key.asc'
+      state: present
 
-    - name: install Typora repo (apt)
-      become: true
-      apt_repository:
-        repo: 'deb https://typora.io/linux'
-        filename: typora
-        state: present
+  - name: install Typora repo (apt)
+    become: true
+    apt_repository:
+      repo: 'deb https://typora.io/linux'
+      filename: typora
+      state: present
 
-    - name: install Typora (apt)
-      become: true
-      apt:
-        name: "typora"
-        state: present
+  - name: install Typora (apt)
+    become: true
+    apt:
+      name: "typora"
+      state: present
