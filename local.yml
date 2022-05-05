@@ -81,7 +81,7 @@
   - name: install Typora repo (apt)
     become: true
     apt_repository:
-      repo: 'deb https://typora.io/linux'
+      repo: 'deb https://typora.io/linux ./'
       filename: typora
       state: present
 
