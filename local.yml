@@ -22,18 +22,35 @@
         - gpg
         - git
         - git-lfs
-        - htop
-        - iotop
         - curl
         - apt-transport-https
-        - imagemagick
-        - tmux
-        # Need this for the dconf module
-        - python3-psutil
         - ca-certificates
         - software-properties-common
         - virtualenv
         - python3-setuptools
+        # Need this for the dconf module
+        - python3-psutil
+        # Terminal
+        - htop
+        - iotop
+        - tmux
+        # Image editing
+        - gimp
+        - imagemagick
+        - darktable
+        # Digital Painting
+        - krita
+        # Vecor Graphics
+        - inkscape
+        # Media
+        - vlc-bin
+        - audacity
+        # Video Editing
+        - ffmpeg
+        - kdenlive
+        - handbrake
+        
+        
       state: latest
       update_cache: true
   
