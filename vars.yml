@@ -49,3 +49,13 @@ visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | terna
 # The CLI executable
 visual_studio_code_exe: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
 
+
+# The number of containers to create
+container_count: 1
+# Default container name
+default_container_name: docker
+# Default Docker image
+default_container_image: ubuntu
+# Default command to run on new containers
+default_container_command: sleep 1
+
