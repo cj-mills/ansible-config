@@ -142,6 +142,17 @@
   - name: Install Docker Module for Python
     pip:
       name: docker
+      
+  - name: Install Nvidia Docker
+    apt:
+      name: nvidia-docker2
+      state: latest
+      update_cache: true
+      
+  - name: Restart docker
+    service:
+      name: docker
+      state: restarted
   
 #   # Add Docker Image and Container Tasks
 #   - name: Pull default Docker image
