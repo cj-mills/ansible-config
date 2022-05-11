@@ -43,7 +43,7 @@
         # Vecor Graphics
         - inkscape
         # Media
-        - vlc-bin
+        - vlc
         - audacity
         # Video Editing
         - ffmpeg
