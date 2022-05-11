@@ -158,7 +158,6 @@
       src: "{{ downloads_dir }}/nvidia-docker.list"
       dest: "/etc/apt/sources.list.d/nvidia-docker.list"
       
-      
   - name: Install Nvidia Docker
     apt:
       name: nvidia-docker2
