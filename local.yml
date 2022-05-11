@@ -8,15 +8,15 @@
   # enable sudo
   become: true
   pre_tasks:
-    - name: pre-run | update package cache (debian, etc)
+    - name: pre-run | Install aptitude and update package cache (debian, etc)
       tags: always
-      apt: update_cache=yes
+      apt: name=aptitude state=latest update_cache=true
       when: ansible_distribution in ["Debian", "Ubuntu"]
       
   tasks:
   - name: Install packages
     # Use the package module ot install packages
-    package:
+    apt:
       name:
         - wget
         - gpg
@@ -30,6 +30,12 @@
         - tmux
         # Need this for the dconf module
         - python3-psutil
+        - ca-certificates
+        - software-properties-common
+        - virtualenv
+        - python3-setuptools
+      state: latest
+      update_cache: true
   
   # Customize bash prompt
   - name: Customize bash prompt
@@ -98,3 +104,38 @@
     apt:
       name: "typora"
       state: present
+  
+  # Install Docker
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add Docker Repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+      state: present
+
+  - name: Update apt and install docker-ce
+    apt:
+      name: docker-ce
+      state: latest
+      update_cache: true
+
+  - name: Install Docker Module for Python
+    pip:
+      name: docker
+  
+#   # Add Docker Image and Container Tasks
+#   - name: Pull default Docker image
+#     community.docker.docker_image:
+#       name: "{{ default_container_image }}"
+#       source: pull
+  
+#   - name: Create default containers
+#     community.docker.docker_container:
+#       name: "{{ default_container_name }}{{ item }}"
+#       image: "{{ default_container_image }}"
+#       command: "{{ default_container_command }}"
+#       state: present
+#     with_sequence: count={{ container_count }}
