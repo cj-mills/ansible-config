@@ -149,8 +149,9 @@
       state: present
   
   - name: Download nvidia-docker Repository list
-    get_url: "https://nvidia.github.io/nvidia-docker/ubuntu22.04/nvidia-docker.list"
-    dest: "{{ downloads_dir }}/nvidia-docker.list"
+    get_url: 
+      url: https://nvidia.github.io/nvidia-docker/ubuntu22.04/nvidia-docker.list
+      dest: "{{ downloads_dir }}/nvidia-docker.list"
       
   - name: Add nvidia-docker Repository list
     copy:
