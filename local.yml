@@ -148,10 +148,15 @@
       url: https://nvidia.github.io/nvidia-docker/gpgkey
       state: present
   
-  - name: Add nvidia-docker Repository
-    command: "curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu22.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list"
-    args:
-      creates: "/etc/apt/sources.list.d/nvidia-docker.list"
+  - name: Download nvidia-docker Repository list
+    get_url: "https://nvidia.github.io/nvidia-docker/ubuntu22.04/nvidia-docker.list"
+    dest: "{{ downloads_dir }}/nvidia-docker.list"
+      
+  - name: Add nvidia-docker Repository list
+    copy:
+      src: "{{ downloads_dir }}/nvidia-docker.list"
+      dest: "/etc/apt/sources.list.d/nvidia-docker.list"
+      
       
   - name: Install Nvidia Docker
     apt:
