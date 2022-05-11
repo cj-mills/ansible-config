@@ -49,8 +49,6 @@
         - ffmpeg
         - kdenlive
         - handbrake
-        
-        
       state: latest
       update_cache: true
   
