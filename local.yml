@@ -28,9 +28,7 @@
         - software-properties-common
         - virtualenv
         - python3-setuptools
-        - python-opengl
         - xvfb
-        - pyvirtualdisplay
         # Need this for the dconf module
         - python3-psutil
         # Terminal
