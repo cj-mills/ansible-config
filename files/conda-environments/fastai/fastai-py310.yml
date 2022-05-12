@@ -288,4 +288,4 @@ dependencies:
     - tensorboard-plugin-wit==1.8.1
     - wandb==0.12.16
     - werkzeug==2.1.2
-prefix: /home/innom-dt/mambaforge/envs/fastai-base
+
