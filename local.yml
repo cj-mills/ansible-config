@@ -60,6 +60,20 @@
       regexp: "^    PS1='\\${debian_chroot:\\+\\(\\$debian_chroot\\)}\\\\\\[\\\\033\\[01;32m\\\\\\]\\\\u@\\\\h\\\\\\[\\\\033\\[00m\\\\\\]:\\\\\\[\\\\033\\[01;34m\\\\\\]\\\\w\\\\\\[\\\\033\\[00m\\\\\\]\\\\\\$ '"
       line: "    PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\n\\$ '"
       backup: true
+      
+  # Install Annotator image annotation tool
+  - name: Install Annotator repo
+    become: true
+    apt_repository:
+      repo: 'ppa:ubuntuhandbook1/annotator'
+      state: present
+  
+  - name: Install Annotator
+    become: true
+    apt: 
+      name: com.github.phase1geo.annotator
+      state: present
+      update_cache: true
         
   # Install VS Code
   - name: install VS Code key (apt)
