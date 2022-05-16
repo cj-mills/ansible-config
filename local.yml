@@ -92,7 +92,7 @@
   - name: install VS Code (apt)
     become: true
     apt:
-      name: "{{ visual_studio_code_package }}"
+      name: "code"
       state: present
       
   # Download the latest mambaforge installer file if it does not already exist
