@@ -5,13 +5,6 @@ ansible_python_interpreter: /usr/bin/python3
 home: "/home/{{ user }}"
 downloads_dir: "{{ home }}/Downloads"
 
-# Visual Studio Code version number (defaults to the latest version)
-visual_studio_code_version: ''
-
-# Build (either 'stable' or 'insiders') https://code.visualstudio.com/insiders/
-# Ubuntu only (code-insiders isn't in Microsoft's RPM repo)
-visual_studio_code_build: stable
-
 # Mirror server for fetching the public keys and the Visual Studio Code
 # installation package. The URL may include directories. The URL must not end
 # with a trailing slash.
