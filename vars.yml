@@ -20,9 +20,6 @@ visual_studio_code_mirror: 'https://packages.microsoft.com'
 # Users to install extensions for and/or write settings.json
 users: []
 
-# The package name to install
-visual_studio_code_package: "code"
-
 # The number of containers to create
 container_count: 1
 # Default container name
