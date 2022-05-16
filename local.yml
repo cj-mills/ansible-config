@@ -85,7 +85,7 @@
   - name: install VS Code repo (apt)
     become: true
     apt_repository:
-      repo: 'deb [arch=amd64{{ visual_studio_code_gpgcheck | ternary("", " trusted=yes") }}] {{ visual_studio_code_mirror }}/repos/code stable main'
+      repo: 'deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/code stable main'
       filename: vscode
       state: present
     when: not visual_studio_code_skip_add_repo
@@ -93,7 +93,7 @@
   - name: install VS Code (apt)
     become: true
     apt:
-      name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
+      name: "{{ visual_studio_code_package }}"
       state: present
       
   # Download the latest mambaforge installer file if it does not already exist
