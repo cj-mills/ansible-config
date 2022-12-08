@@ -40,9 +40,9 @@
         - imagemagick
         - darktable
         # Digital Painting
-        - krita
+#         - krita
         # Vecor Graphics
-        - inkscape
+#         - inkscape
         # Media
         - vlc
         - audacity
@@ -61,19 +61,19 @@
       line: "    PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\n\\$ '"
       backup: true
       
-  # Install Annotator image annotation tool
-  - name: Install Annotator repo
-    become: true
-    apt_repository:
-      repo: 'ppa:ubuntuhandbook1/annotator'
-      state: present
+#   # Install Annotator image annotation tool
+#   - name: Install Annotator repo
+#     become: true
+#     apt_repository:
+#       repo: 'ppa:ubuntuhandbook1/annotator'
+#       state: present
   
-  - name: Install Annotator
-    become: true
-    apt: 
-      name: com.github.phase1geo.annotator
-      state: present
-      update_cache: true
+#   - name: Install Annotator
+#     become: true
+#     apt: 
+#       name: com.github.phase1geo.annotator
+#       state: present
+#       update_cache: true
         
   # Install VS Code
   - name: install VS Code key (apt)
@@ -134,47 +134,47 @@
       name: "typora"
       state: present
   
-  # Install Docker
-  - name: Add Docker GPG apt Key
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      state: present
+#   # Install Docker
+#   - name: Add Docker GPG apt Key
+#     apt_key:
+#       url: https://download.docker.com/linux/ubuntu/gpg
+#       state: present
 
-  - name: Add Docker Repository
-    apt_repository:
-      repo: deb https://download.docker.com/linux/ubuntu jammy stable
-      state: present
+#   - name: Add Docker Repository
+#     apt_repository:
+#       repo: deb https://download.docker.com/linux/ubuntu jammy stable
+#       state: present
 
-  - name: Update apt and install docker-ce
-    apt:
-      name: docker-ce
-      state: latest
-      update_cache: true
+#   - name: Update apt and install docker-ce
+#     apt:
+#       name: docker-ce
+#       state: latest
+#       update_cache: true
 
-  - name: Install Docker Module for Python
-    pip:
-      name: docker
+#   - name: Install Docker Module for Python
+#     pip:
+#       name: docker
       
-  - name: Add nvidia-docker GPG apt Key
-    apt_key:
-      url: https://nvidia.github.io/nvidia-docker/gpgkey
-      state: present
+#   - name: Add nvidia-docker GPG apt Key
+#     apt_key:
+#       url: https://nvidia.github.io/nvidia-docker/gpgkey
+#       state: present
   
-  - name: Download nvidia-docker Repository list
-    get_url: 
-      url: https://nvidia.github.io/nvidia-docker/ubuntu22.04/nvidia-docker.list
-      dest: "/etc/apt/sources.list.d/nvidia-docker.list"
+#   - name: Download nvidia-docker Repository list
+#     get_url: 
+#       url: https://nvidia.github.io/nvidia-docker/ubuntu22.04/nvidia-docker.list
+#       dest: "/etc/apt/sources.list.d/nvidia-docker.list"
       
-  - name: Install Nvidia Docker
-    apt:
-      name: nvidia-docker2
-      state: latest
-      update_cache: true
+#   - name: Install Nvidia Docker
+#     apt:
+#       name: nvidia-docker2
+#       state: latest
+#       update_cache: true
       
-  - name: Restart docker
-    service:
-      name: docker
-      state: restarted
+#   - name: Restart docker
+#     service:
+#       name: docker
+#       state: restarted
   
 #   # Add Docker Image and Container Tasks
 #   - name: Pull default Docker image
